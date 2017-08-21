@@ -1,7 +1,16 @@
 <section ng-controller="HomeCtrl as home">
     <div>
-        <h1>Home Page</h1>
-        <h2 ng-repeat="room in home.rooms"> Room {{ ($index + 1) }}</h2>
+        <header>
+            <h1>Bloc Chat</h1>
+        </header>
+
+        <!-- Add new rooms -->
+        <div>
+            <button type="button" class="new-room-modal" ng-click="home.newRoom()">New Room</button>
+            <!-- <h2 ng-repeat="room in home.rooms"> Room {{ ($index + 1) }}</h2> -->
+            <h2 ng-repeat="room in home.rooms"> {{ room.$value }}</h2>
+        </div>
+
     </div>
 
 </section>
