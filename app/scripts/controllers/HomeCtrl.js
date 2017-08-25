@@ -1,21 +1,26 @@
 (function() {
-    function HomeCtrl(Room, $uibModal) {
+    function HomeCtrl(Room, Message, $uibModal) {
         // Assign Room array retrieved by all method to $scope variable
-        var room = this;
+        this.rooms = Room.all;
+        this.currentRoom = null;
+        this.messages = null;
 
-        room.rooms = Room.all;
-
-        room.newRoom = function () {
+        this.newRoom = function () {
             $uibModal.open({
               templateUrl: '/templates/modal.html',
               size: 'sm',
               controller: 'ModalCtrl as modal'
             });
-        }
+        };
+
+        this.setCurrentRoom = function (room) {
+            this.currentRoom = room;
+            this.messages = Message.getByRoomId(room.$id);
+        };
 
     }
 
     angular
         .module('blocChat')
-        .controller('HomeCtrl', ['Room', '$uibModal', HomeCtrl]);
+        .controller('HomeCtrl', ['Room', 'Message', '$uibModal', HomeCtrl]);
 })();
