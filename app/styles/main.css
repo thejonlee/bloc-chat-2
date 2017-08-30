@@ -1,0 +1,56 @@
+.nav {
+    border-style: double;
+    border-color: darkslategrey;
+    font-family: monospace;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 20%;
+    height: 100%;
+    background-color: #3284bf;
+    z-index: 1;
+    padding: 10px;
+}
+
+/*.nav .room-name:hover {
+    cursor: pointer;
+}*/
+
+.nav-header {
+    display: inline-block;
+}
+
+.messages {
+    font-family: "Courier New", Courier, monospace;
+    border-style: double;
+    border-color: darkslateblue;
+    position: fixed;
+    top: 0px;
+    left: 200px;
+    width: 82%;
+    height: 100%;
+    background-color: #fcffbf;
+    z-index: 2;
+    overflow: scroll;
+}
+.messages-body{
+    padding-left: 20px;
+}
+.messages-body .username {
+    font-weight: bold;
+}
+
+.messages-body .timestamp {
+    float: right;
+    padding-right: 60px;
+}
+
+.messages-body .username .timestamp {
+    display: inline-block;
+}
+
+.messages-body .content {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: inline-block;
+}
