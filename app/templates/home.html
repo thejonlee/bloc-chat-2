@@ -1,9 +1,14 @@
 <main ng-controller="HomeCtrl as home">
-    <div>
-        <header>
-            <h1>Bloc Chat</h1>
+    <div class="nav">
+        <header class="nav-header">
+            <h1 class="nav-title">Bloc Chat</h1>
         </header>
-        <div class="room-list">
+
+        <div>
+            <h3>User: {{home.currentUser}}</h3>
+        </div>
+
+        <div class="nav-body">
             <span>
                 <!-- Add new rooms button -->
                 <button type="button" class="new-room-modal" ng-click="home.newRoom()">New Room</button>
@@ -11,19 +16,19 @@
 
             <!-- List rooms -->
             <div ng-repeat="room in home.rooms">
-              <a ng-click="home.setCurrentRoom(room)"> {{ room.$value }}
+              <a class="room-name" ng-click="home.setCurrentRoom(room)"> {{ room.$value }}
               </a>
             </div>
         </div>
 
         <!-- Messages -->
-        <section class="chat-messages">
+        <section class="messages">
           <h1>{{ home.currentRoom.$value }}</h1>
-          <div class="message-container">
-            <div class="message" ng-repeat="message in home.messages">
-              <p class="message-username">{{ message.username }} <span class="message-timestamp">{{ message.sentAt | date : "shortTime" }}</span></p>
-              <p class="message-content">{{ message.content }}</p>
-            </div>
+          <div class="messages-body" ng-repeat="message in home.messages">
+            <!-- <div class="message" ng-repeat="message in home.messages"> -->
+              <p class="username">{{ message.username }} </p>
+              <p class="timestamp">{{ message.sentAt | date : "shortTime" }}</p>
+              <p class="content">{{ message.content }}</p>
           </div>
         </section>
     </div>

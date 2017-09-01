@@ -1,9 +1,10 @@
 (function() {
-    function HomeCtrl(Room, Message, $uibModal) {
+    function HomeCtrl(Room, Message, $uibModal, $cookies) {
         // Assign Room array retrieved by all method to $scope variable
         this.rooms = Room.all;
         this.currentRoom = null;
         this.messages = null;
+        this.currentUser = $cookies.get('blocChatCurrentUser');
 
         this.newRoom = function () {
             $uibModal.open({
@@ -22,5 +23,5 @@
 
     angular
         .module('blocChat')
-        .controller('HomeCtrl', ['Room', 'Message', '$uibModal', HomeCtrl]);
+        .controller('HomeCtrl', ['Room', 'Message', '$uibModal', '$cookies', HomeCtrl]);
 })();
