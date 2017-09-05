@@ -31,5 +31,15 @@
               <p class="content">{{ message.content }}</p>
           </div>
         </section>
+
+        <!-- Send Messages -->
+        <div class="message-field">
+            <!--ngModel directive binds an input, select, textarea (or custom form control) to a property on the scope using NgModelController, which is created and exposed by this directive. -->
+            <!--ngModel is responsible for: Binding the view into the model, which other directives such as input , textarea or select require.-->
+            <input type="text" placeholder="Enter message..." class="message-box" ng-model="home.newMessage.content">
+            <button class="btn-new-message" type="button" ng-click="home.sendMessage()">Send</button>
+
+        </div>
+
     </div>
 </main>

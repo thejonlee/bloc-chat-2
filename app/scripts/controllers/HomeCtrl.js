@@ -5,8 +5,14 @@
         this.currentRoom = null;
         this.messages = null;
         this.currentUser = $cookies.get('blocChatCurrentUser');
+        this.newMessage = {
+          content: null,
+          roomId: null,
+          sentAt: null,
+          username: null
+        }
 
-        this.newRoom = function () {
+        this.newRoom = function() {
             $uibModal.open({
               templateUrl: '/templates/modal.html',
               size: 'sm',
@@ -14,9 +20,18 @@
             });
         };
 
-        this.setCurrentRoom = function (room) {
+        this.setCurrentRoom = function(room) {
             this.currentRoom = room;
             this.messages = Message.getByRoomId(room.$id);
+        };
+
+        this.sendMessage = function(newMessage) {
+            this.newMessage.roomId = this.currentRoom.$id;
+            this.newMessage.username = this.currentUser;
+            this.newMessage.sentAt = firebase.database.ServerValue.TIMESTAMP;
+            console.log(this.currentUser);
+            console.log(this.currentRoom.$id);
+            Message.send(this.newMessage);
         };
 
     }
